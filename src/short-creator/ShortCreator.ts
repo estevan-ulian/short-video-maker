@@ -5,6 +5,7 @@ import cuid from "cuid";
 import path from "path";
 
 import { Kokoro } from "./libraries/Kokoro";
+import { ElevenLabs } from "./libraries/ElevenLabs";
 import { Remotion } from "./libraries/Remotion";
 import { Whisper } from "./libraries/Whisper";
 import { FFMpeg } from "./libraries/FFmpeg";
@@ -32,6 +33,7 @@ export class ShortCreator {
     private config: Config,
     private remotion: Remotion,
     private kokoro: Kokoro,
+    private elevenLabs: ElevenLabs,
     private whisper: Whisper,
     private ffmpeg: FFMpeg,
     private pexelsApi: PexelsAPI,
@@ -106,10 +108,16 @@ export class ShortCreator {
 
     let index = 0;
     for (const scene of inputScenes) {
-      const audio = await this.kokoro.generate(
+      // const audio = await this.kokoro.generate(
+      //   scene.text,
+      //   config.voice ?? "af_heart",
+      // );
+
+      // TODO: add conditional to call Kokoro if ELEVENLABS_API_KEY is undefined
+      // Static TTS service for now
+      const audio = await this.elevenLabs.generate(
         scene.text,
-        config.voice ?? "af_heart",
-      );
+      )
       let { audioLength } = audio;
       const { audio: audioStream } = audio;
 
