@@ -12,6 +12,7 @@ import { ShortCreator } from "./short-creator/ShortCreator";
 import { logger } from "./logger";
 import { Server } from "./server/server";
 import { MusicManager } from "./short-creator/music";
+import { ElevenLabs } from "./short-creator/libraries/ElevenLabs";
 
 async function main() {
   const config = new Config();
@@ -35,6 +36,8 @@ async function main() {
   const remotion = await Remotion.init(config);
   logger.debug("initializing kokoro");
   const kokoro = await Kokoro.init(config.kokoroModelPrecision);
+  logger.debug("initializing eleven labs");
+  const elevenLabs = await ElevenLabs.init(config.elevenLabsApiKey);
   logger.debug("initializing whisper");
   const whisper = await Whisper.init(config);
   logger.debug("initializing ffmpeg");
@@ -46,6 +49,7 @@ async function main() {
     config,
     remotion,
     kokoro,
+    elevenLabs,
     whisper,
     ffmpeg,
     pexelsApi,
