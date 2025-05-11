@@ -1,6 +1,6 @@
 import { KokoroTTS, TextSplitterStream } from "kokoro-js";
 import {
-  VoiceEnum,
+  KokoroVoiceEnum,
   type kokoroModelPrecision,
   type Voices,
 } from "../../types/shorts";
@@ -71,7 +71,7 @@ export class Kokoro {
   }
 
   listAvailableVoices(): Voices[] {
-    const voices = Object.values(VoiceEnum) as Voices[];
+    const voices = Object.values(KokoroVoiceEnum) as Voices[];
     return voices;
   }
 }

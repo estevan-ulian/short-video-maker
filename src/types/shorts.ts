@@ -40,7 +40,7 @@ export const sceneInput = z.object({
 });
 export type SceneInput = z.infer<typeof sceneInput>;
 
-export enum VoiceEnum {
+export enum KokoroVoiceEnum {
   af_heart = "af_heart",
   af_alloy = "af_alloy",
   af_aoede = "af_aoede",
@@ -98,7 +98,7 @@ export const renderConfig = z.object({
       "Background color of the caption, a valid css color, default is blue",
     ),
   voice: z
-    .nativeEnum(VoiceEnum)
+    .nativeEnum(KokoroVoiceEnum)
     .optional()
     .describe("Voice to be used for the speech, default is af_heart"),
   orientation: z
@@ -108,7 +108,7 @@ export const renderConfig = z.object({
 });
 export type RenderConfig = z.infer<typeof renderConfig>;
 
-export type Voices = `${VoiceEnum}`;
+export type Voices = `${KokoroVoiceEnum}`;
 
 export type Video = {
   id: string;
