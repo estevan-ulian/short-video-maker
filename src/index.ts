@@ -65,7 +65,7 @@ async function main() {
         "testing if the installation was successful - this may take a while...",
       );
       try {
-        const audioBuffer = (await kokoro.generate("hi", "af_heart")).audio;
+        const audioBuffer = (await elevenLabs.generate("Olá!")).audio;
         await ffmpeg.createMp3DataUri(audioBuffer);
         await pexelsApi.findVideo(["dog"], 2.4);
         const testVideoPath = path.join(config.tempDirPath, "test.mp4");
