@@ -3,6 +3,7 @@ import {
   ElevenLabsVoiceEnum,
   type ElevenLabsVoices,
 } from "../../types/elevenlabs";
+import { AudioContext } from "node-web-audio-api";
 
 const BASE_URL = "https://api.elevenlabs.io/v1";
 const MP3_FORMAT = "mp3_44100_128";
